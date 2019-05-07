@@ -1,0 +1,138 @@
+{
+    "title": "NBA v3 Projections",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/fantasydata.net/nba-v3-projections/1.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://api.fantasydata.net/v3/nba/projections",
+                    "https://api.fantasydata.net/v3/nba/projections",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyHeader": {
+                "label": "Ocp-Apim-Subscription-Key (apiKeyHeader)",
+                "viewClass": "TextFieldView"
+            },
+            "apiKeyQuery": {
+                "label": "subscription-key (apiKeyQuery)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "DfsSlatesByDate": {
+            "main": "./lib/actions/DfsSlatesByDate.js",
+            "title": "DFS Slates by Date",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DfsSlatesByDate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProjectedPlayerGameStatsByDateWInjuriesDfsSalaries": {
+            "main": "./lib/actions/ProjectedPlayerGameStatsByDateWInjuriesDfsSalaries.js",
+            "title": "Projected Player Game Stats by Date (w/ Injuries, DFS Salaries)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProjectedPlayerGameStatsByDateWInjuriesDfsSalaries.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProjectedPlayerGameStatsByPlayerWInjuriesDfsSalaries": {
+            "main": "./lib/actions/ProjectedPlayerGameStatsByPlayerWInjuriesDfsSalaries.js",
+            "title": "Projected Player Game Stats by Player (w/ Injuries, DFS Salaries)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProjectedPlayerGameStatsByPlayerWInjuriesDfsSalaries.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProjectedPlayerSeasonStats": {
+            "main": "./lib/actions/ProjectedPlayerSeasonStats.js",
+            "title": "Projected Player Season Stats",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProjectedPlayerSeasonStats.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProjectedPlayerSeasonStatsByPlayer": {
+            "main": "./lib/actions/ProjectedPlayerSeasonStatsByPlayer.js",
+            "title": "Projected Player Season Stats by Player",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProjectedPlayerSeasonStatsByPlayer.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ProjectedPlayerSeasonStatsByTeam": {
+            "main": "./lib/actions/ProjectedPlayerSeasonStatsByTeam.js",
+            "title": "Projected Player Season Stats by Team",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ProjectedPlayerSeasonStatsByTeam.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
